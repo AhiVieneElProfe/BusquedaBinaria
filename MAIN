@@ -1,0 +1,65 @@
+#include <iostream>
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+
+int main(){
+	int n;
+	int vector[n];
+	int i, menor, temp, j, numero, mitad;
+	
+	printf("Tamaño del vector:");
+	scanf("%d", &n);
+		
+    time_t t;
+   
+    /* Intializes random number generator */
+   srand((unsigned) time(&t));
+   
+	for(i=0; i<n; i++){
+		vector[i]= rand() % 100;
+		printf("%d\n", vector[i]);
+	}
+	
+	/*Ordenar el vector*/
+	for(i=0; i<n; i++){
+		menor = i;
+		for(j= i+1; j<n; j++){
+			if(vector[j] < vector[menor]){
+				menor = j;
+			}
+			
+		}
+		if(i!=menor){
+			temp = vector[i];
+		    vector[i] = vector[menor];
+		    vector[menor] = temp; 
+		}
+
+	}
+	
+	/*Imprimir vector ordenado*/
+	for(i=0; i<n; i++){
+		printf("\n%d\n", vector[i]);
+	}
+	
+	printf("Que numero quieres buscar?");
+	scanf("%d", &numero);
+	mitad = n/2;
+	
+	do{	
+		if(vector[mitad]==numero){
+			printf("Encontrado en la posicion %d", mitad);
+		}	
+	
+		if(vector[mitad] < numero){
+			mitad = n - mitad;
+					
+		}else{
+			mitad = mitad/2;
+		}
+		
+	}while(vector[mitad]==numero);
+	
+}

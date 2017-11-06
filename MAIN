@@ -54,7 +54,7 @@ int main(){
 		}	
 	
 		if(vector[mitad] < numero){
-			mitad = n - mitad;
+			mitad = mitad + (mitad/2);
 					
 		}else{
 			mitad = mitad/2;
